@@ -15,7 +15,6 @@ const SITEMAP_ENTRIES: SitemapEntry[] = [
   { path: '/learn', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/learn/what-is-tdee', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.5 },
-  { path: '/privacy', changeFrequency: 'yearly', priority: 0.3 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

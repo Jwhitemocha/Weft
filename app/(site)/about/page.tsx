@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export const metadata = {
   title: 'About',
-  description: 'Learn about Weft and our mission to provide honest fitness education.',
+  description: 'Fitness tools that actually teach you what the numbers mean. No subscriptions, no tracking, no bullshit.',
 }
 
 export default function AboutPage() {
@@ -34,7 +34,7 @@ export default function AboutPage() {
               About <span className="text-denim-500">Weft</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-neutral-muted leading-relaxed">
-              A permanent public utility for fitness and nutrition clarity.
+              Fitness tools that don&apos;t suck.
             </p>
           </div>
         </div>
@@ -45,10 +45,10 @@ export default function AboutPage() {
         {/* Mission */}
         <div className="space-y-6 mb-16">
           <p className="text-lg text-neutral-muted leading-relaxed">
-            Weft exists to become the most trusted source of truth for fat loss fundamentals on the internet.
+            The fitness industry is full of noise. Apps that track everything but explain nothing. Influencers selling plans. Calculators that spit out numbers with no context.
           </p>
           <p className="text-lg text-neutral-muted leading-relaxed">
-            We replace confusion, fitness myths, and over-engineered apps with clarity, calm design, and numbers that make sense.
+            Weft is different. We built tools that actually teach you what the numbers mean and why they matter. 
           </p>
         </div>
 
@@ -71,23 +71,23 @@ export default function AboutPage() {
             </div>
             <div className="flex-1">
               <p className="text-lg text-neutral-muted leading-relaxed">
-                Our symbol is a <span className="font-bold text-denim-600">Denim Daruma</span>—a fusion of two powerful traditions that represent everything we believe about sustainable change.
+                A <span className="font-bold text-denim-600">Daruma</span> is a Japanese symbol of perseverance. <span className="font-bold text-denim-600">Denim</span> gets better with time and wear. Put them together and you get what fitness actually is: something you build slowly, that lasts.
               </p>
             </div>
           </div>
 
           {/* Why Denim Daruma */}
           <div className="bg-gradient-to-br from-denim-700 to-denim-500 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Why Denim Daruma?</h3>
+            <h3 className="text-2xl font-bold mb-4">Why This Matters</h3>
             <div className="space-y-4 text-denim-50 leading-relaxed">
               <p>
-                Fat loss isn&apos;t a 30-day challenge. It&apos;s not a hack, a trick, or a secret. It&apos;s <strong>structure built to last</strong>.
+                Fat loss isn&apos;t a 30-day challenge. There&apos;s no hack, no trick, no secret meal plan. It&apos;s just consistent work over time.
               </p>
               <p>
-                Like denim that improves with wear, sustainable results come from systems you can maintain. Like the Daruma, they require patience, focus, and the willingness to trust the process—one step at a time.
+                Like good denim, results get better the longer you stick with them. Like the Daruma, you need patience and focus to see it through.
               </p>
               <p className="text-lg font-semibold text-white pt-4">
-                We chose the Denim Daruma because we believe fitness should be <em>durable</em>, <em>honest</em>, and <em>earned</em>.
+                Fitness should be durable, honest, and earned. That&apos;s the Denim Daruma.
               </p>
             </div>
           </div>
@@ -95,44 +95,34 @@ export default function AboutPage() {
 
         {/* Principles */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-neutral-text mb-8">Our Principles</h2>
+          <h2 className="text-2xl font-bold text-neutral-text mb-8">How We Build</h2>
           <div className="grid gap-6 sm:grid-cols-2">
             <Card className="p-6 hover:shadow-lg hover:shadow-denim-500/10 hover:border-denim-300 transition-all duration-300">
               <h3 className="text-lg font-bold text-denim-500 mb-2">Clarity Over Complexity</h3>
-              <p className="text-neutral-muted">Every number must be explainable.</p>
+              <p className="text-neutral-muted">If we can&apos;t explain how a number was calculated, we don&apos;t show it.</p>
             </Card>
 
             <Card className="p-6 hover:shadow-lg hover:shadow-denim-500/10 hover:border-denim-300 transition-all duration-300">
               <h3 className="text-lg font-bold text-denim-500 mb-2">Structure Over Motivation</h3>
-              <p className="text-neutral-muted">We teach systems, not hype.</p>
+              <p className="text-neutral-muted">Systems work when you don&apos;t feel like it. Motivation doesn&apos;t.</p>
             </Card>
 
             <Card className="p-6 hover:shadow-lg hover:shadow-denim-500/10 hover:border-denim-300 transition-all duration-300">
               <h3 className="text-lg font-bold text-denim-500 mb-2">Transparency Over Magic</h3>
-              <p className="text-neutral-muted">No black boxes. No hidden logic.</p>
+              <p className="text-neutral-muted">Every formula is visible. Every assumption is explained. No secrets.</p>
             </Card>
 
             <Card className="p-6 hover:shadow-lg hover:shadow-denim-500/10 hover:border-denim-300 transition-all duration-300">
               <h3 className="text-lg font-bold text-denim-500 mb-2">Craft Over Speed</h3>
-              <p className="text-neutral-muted">Fewer tools, done exceptionally well.</p>
+              <p className="text-neutral-muted">We&apos;d rather ship one great tool than ten mediocre ones.</p>
             </Card>
           </div>
-        </div>
-
-        {/* Privacy & Honesty */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-neutral-text mb-8">Privacy & Honesty</h2>
-          <Card className="p-8 bg-gradient-to-br from-denim-500/5 to-denim-700/5 border-denim-300/20">
-            <p className="text-lg text-neutral-text leading-relaxed">
-              Weft is front-end only. No accounts. No backend. No tracking cookies. No paywalls. Just structure.
-            </p>
-          </Card>
         </div>
 
         {/* Disclaimer */}
         <div className="bg-neutral-surface border border-neutral-border rounded-xl p-6">
           <p className="text-sm text-neutral-muted italic leading-relaxed">
-            Weft is for education and general guidance. It does not diagnose, treat, or replace professional medical advice. Individual needs vary. Consult a qualified clinician for medical concerns.
+            This is education, not medical advice. If you have health concerns, talk to a doctor. We&apos;re here to teach, not diagnose.
           </p>
         </div>
       </section>

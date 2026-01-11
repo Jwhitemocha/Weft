@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import clsx from 'clsx'
-import Logo, { LogoWithText } from '@/components/ui/Logo'
+import { LogoWithText } from '@/components/ui/Logo'
 
 interface NavItem {
   href: string
@@ -60,13 +60,6 @@ export default function Header(): React.ReactElement {
               height={36}
               className="h-9 w-auto"
             />
-          </Link>
-        </div>
-
-        {/* Weft Weave Logo - Center (Desktop only) */}
-        <div className="hidden lg:flex lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-          <Link href="/" className="transition-opacity hover:opacity-80">
-            <Logo variant="weave" size={40} />
           </Link>
         </div>
 
