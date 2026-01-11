@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: 'Weft',
     images: [
       {
-        url: '/logo/weft_daruma.png',
+        url: '/logo/denim_daruma_text.png',
         width: 1200,
         height: 630,
         alt: 'Weft - Denim Daruma Logo',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Weft - Weaving Your Fitness. Together.',
     description: 'A permanent public utility for fitness and nutrition clarity.',
-    images: ['/logo/weft_daruma.png'],
+    images: ['/logo/denim_daruma_text.png'],
   },
   robots: {
     index: true,

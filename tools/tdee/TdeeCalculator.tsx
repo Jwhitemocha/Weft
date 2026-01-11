@@ -5,6 +5,8 @@ import { generateTdeeOutputs, type TdeeInputs, type TdeeOutputs } from '@/lib/ca
 import { lbsToKg, feetInchesToCm } from '@/lib/format/unitConversions'
 import { formatCalories } from '@/lib/format/formatters'
 import { tdeeCopy } from './copy'
+import { buildFoodFactsPool } from './foodFacts'
+import { selectSmartFacts } from './smartFactFilter'
 import clsx from 'clsx'
 
 // BMI calculation and recommendation
@@ -242,68 +244,6 @@ function StepsSlider({
   )
 }
 
-// Fun fact comparisons for TDEE
-interface TdeeFunFact {
-  emoji: string
-  comparison: string
-  value: string
-}
-
-function getTdeeFunFacts(tdee: number): TdeeFunFact[] {
-  return [
-    {
-      emoji: '🍔',
-      comparison: 'Big Macs',
-      value: (tdee / 550).toFixed(1),
-    },
-    {
-      emoji: '🍕',
-      comparison: 'slices of pizza',
-      value: (tdee / 285).toFixed(0),
-    },
-    {
-      emoji: '🧋',
-      comparison: 'boba teas',
-      value: (tdee / 350).toFixed(1),
-    },
-    {
-      emoji: '☕',
-      comparison: 'Frappuccinos',
-      value: (tdee / 450).toFixed(1),
-    },
-    {
-      emoji: '🍦',
-      comparison: 'scoops of ice cream',
-      value: (tdee / 250).toFixed(1),
-    },
-    {
-      emoji: '🍩',
-      comparison: 'glazed donuts',
-      value: (tdee / 260).toFixed(1),
-    },
-    {
-      emoji: '🍫',
-      comparison: 'Snickers bars',
-      value: (tdee / 250).toFixed(1),
-    },
-    {
-      emoji: '🥤',
-      comparison: 'cans of soda',
-      value: (tdee / 140).toFixed(0),
-    },
-    {
-      emoji: '🍌',
-      comparison: 'bananas',
-      value: (tdee / 105).toFixed(0),
-    },
-    {
-      emoji: '🚶',
-      comparison: 'miles of walking',
-      value: (tdee / 100).toFixed(1),
-    },
-  ]
-}
-
 function getWorkoutMessage(workouts: number): string {
   if (workouts === 0) {
     return 'Resistance training is recommended for overall health and metabolism.'
@@ -364,7 +304,12 @@ function WorkoutsSelector({
 function TdeeFunFacts({ tdee }: { tdee: number }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
-  const facts = useMemo(() => getTdeeFunFacts(tdee), [tdee])
+
+  // Build fact pool and select smart facts
+  const facts = useMemo(() => {
+    const allFacts = buildFoodFactsPool()
+    return selectSmartFacts(allFacts, tdee)
+  }, [tdee])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -374,25 +319,50 @@ function TdeeFunFacts({ tdee }: { tdee: number }) {
         setCurrentIndex((prev) => (prev + 1) % facts.length)
         setIsVisible(true)
       }, 300) // Wait for fade out before changing content
-    }, 3000) // Change every 3 seconds
+    }, 4000) // Change every 4 seconds (slightly longer to read insights)
 
     return () => clearInterval(interval)
   }, [facts.length])
+
+  // Fallback for very low TDEE or when not enough good facts
+  if (facts.length === 0) {
+    return (
+      <div className="mt-5 bg-white/5 rounded-xl p-4 border border-white/10">
+        <p className="text-xs text-denim-200 font-semibold mb-3 flex items-center gap-2">
+          <span>💡</span>
+          <span>Your daily energy budget</span>
+        </p>
+        <div className="bg-white/10 rounded-lg p-5 text-center">
+          <div className="text-2xl mb-2">🍽️</div>
+          <p className="text-sm text-white/80 leading-relaxed">
+            Your TDEE is on the lower end. Focus on nutrient-dense foods that keep you satisfied.
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   const currentFact = facts[currentIndex]
 
   return (
     <div className="mt-5 bg-white/5 rounded-xl p-4 border border-white/10">
-      <p className="text-xs text-denim-200 font-medium mb-3 flex items-center gap-2">
-        <span>✨</span>
-        <span>Fun fact: That&apos;s about...</span>
+      <p className="text-xs text-denim-200 font-semibold mb-3 flex items-center gap-2">
+        <span>💡</span>
+        <span>Your daily energy budget looks like...</span>
       </p>
       <div
-        className={`bg-white/10 rounded-lg p-4 text-center transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`bg-white/10 rounded-lg p-5 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       >
-        <div className="text-4xl mb-2">{currentFact.emoji}</div>
-        <div className="text-3xl font-bold text-white mb-1">{currentFact.value}</div>
-        <div className="text-sm text-white/70">{currentFact.comparison}</div>
+        <div className="text-center mb-3">
+          <div className="text-4xl mb-3">{currentFact.emoji}</div>
+          <div className="text-3xl font-bold text-white mb-1.5">{currentFact.displayValue}</div>
+          <div className="text-sm text-white/80 font-medium">{currentFact.label}</div>
+        </div>
+        <div className="pt-3 border-t border-white/20">
+          <p className="text-xs text-denim-200 text-center italic leading-relaxed">
+            {currentFact.insight}
+          </p>
+        </div>
       </div>
       <div className="flex justify-center gap-1.5 mt-3">
         {facts.map((_, index) => (
@@ -406,9 +376,6 @@ function TdeeFunFacts({ tdee }: { tdee: number }) {
           />
         ))}
       </div>
-      <p className="text-xs text-denim-200 mt-3 italic text-center">
-        Your body burns this much energy every day just being you!
-      </p>
     </div>
   )
 }

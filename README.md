@@ -65,5 +65,5 @@ Open [http://localhost:3000](http://localhost:3000) to view the app.
 ---
 
 <p align="center">
-  <img src="public/logo/daruma_only.png" alt="Weft Daruma" height="64">
+  <img src="public/logo/denim_daruma_only.png" alt="Weft Daruma" height="64">
 </p>

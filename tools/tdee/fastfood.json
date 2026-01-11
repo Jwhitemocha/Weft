@@ -1,0 +1,287 @@
+[
+  {
+    "company": "McDonald's",
+    "items": [
+      {
+        "name": "Big Mac",
+        "calories": 540,
+        "type": "food"
+      },
+      {
+        "name": "Medium Fries",
+        "calories": 320,
+        "type": "food"
+      },
+      {
+        "name": "10 Piece McNuggets",
+        "calories": 410,
+        "type": "food"
+      },
+      {
+        "name": "Hash Browns",
+        "calories": 150,
+        "type": "food"
+      },
+      {
+        "name": "Sausage McMuffin",
+        "calories": 480,
+        "type": "food"
+      },
+      {
+        "name": "Egg McMuffin",
+        "calories": 310,
+        "type": "food"
+      },
+      {
+        "name": "Hotcakes",
+        "calories": 580,
+        "type": "food"
+      },
+      {
+        "name": "McChicken",
+        "calories": 400,
+        "type": "food"
+      },
+      {
+        "name": "Hot Fudge Sundae",
+        "calories": 330,
+        "type": "food"
+      },
+      {
+        "name": "Small McFlurry",
+        "calories": 570,
+        "type": "food"
+      },
+      {
+        "name": "Small Apple Pie",
+        "calories": 250,
+        "type": "food"
+      },
+      {
+        "name": "Chocolate Chip Cookie",
+        "calories": 170,
+        "type": "food"
+      },
+      {
+        "name": "Snack Wrap",
+        "calories": 400,
+        "type": "food"
+      }
+    ]
+  },
+  {
+    "company": "Starbucks",
+    "items": [
+      {
+        "name": "Bacon Gouda",
+        "calories": 360,
+        "type": "food"
+      },
+      {
+        "name": "Cake Pop",
+        "calories": 160,
+        "type": "food"
+      },
+      {
+        "name": "Grande Caramel Frappucino",
+        "calories": 400,
+        "type": "drink"
+      },
+      {
+        "name": "Grande Caramel Macchiato",
+        "calories": 250,
+        "type": "drink"
+      },
+      {
+        "name": "Grande Vanilla Latte",
+        "calories": 250,
+        "type": "drink"
+      }
+    ]
+  },
+  {
+    "company": "In n Out",
+    "items": [
+      {
+        "name": "French Fries",
+        "calories": 360,
+        "type": "food"
+      },
+      {
+        "name": "Chocolate Shake",
+        "calories": 610,
+        "type": "drink"
+      },
+      {
+        "name": "Cheeseburger",
+        "calories": 430,
+        "type": "food"
+      },
+      {
+        "name": "Double-Double",
+        "calories": 610,
+        "type": "food"
+      },
+      {
+        "name": "Hamburger",
+        "calories": 360,
+        "type": "food"
+      }
+    ]
+  },
+  {
+    "company": "Burger King",
+    "items": [
+      {
+        "name": "Whopper with Cheese",
+        "calories": 740,
+        "type": "food"
+      },
+      {
+        "name": "Bacon King",
+        "calories": 1150,
+        "type": "food"
+      },
+      {
+        "name": "Crispy Chicken Sandwich",
+        "calories": 670,
+        "type": "food"
+      },
+      {
+        "name": "9 Pc Chicken Fries",
+        "calories": 280,
+        "type": "food"
+      },
+      {
+        "name": "Medium Fries",
+        "calories": 380,
+        "type": "food"
+      }
+    ]
+  },
+  {
+    "company": "Popeyes",
+    "items": [
+      {
+        "name": "Chicken Wing",
+        "calories": 210,
+        "type": "food"
+      },
+      {
+        "name": "Chicken Leg",
+        "calories": 160,
+        "type": "food"
+      },
+      {
+        "name": "Chicken Thigh",
+        "calories": 280,
+        "type": "food"
+      },
+      {
+        "name": "Chicken Breast",
+        "calories": 380,
+        "type": "food"
+      },
+      {
+        "name": "Chicken Sandwich",
+        "calories": 700,
+        "type": "food"
+      },
+      {
+        "name": "Cajun Fries",
+        "calories": 270,
+        "type": "food"
+      },
+      {
+        "name": "Biscuit",
+        "calories": 210,
+        "type": "food"
+      }
+    ]
+  },
+  {
+    "company": "Bonchon",
+    "items": [
+      {
+        "name": "Soy Garlic Wing",
+        "calories": 140,
+        "type": "food"
+      },
+      {
+        "name": "Spicy Wing",
+        "calories": 90,
+        "type": "food"
+      }
+    ]
+  },
+  {
+    "company": "Generic",
+    "items": [
+      {
+        "name": "Soda Bottle (16oz)",
+        "calories": 240,
+        "type": "drink"
+      },
+      {
+        "name": "Soda Can (12oz)",
+        "calories": 140,
+        "type": "drink"
+      },
+      {
+        "name": "Milk Tea with Boba",
+        "calories": 500,
+        "type": "drink"
+      }
+    ]
+  },
+  {
+    "company": "Chick Fil A",
+    "items": [
+      {
+        "name": "Hash Brown Scramble Bowl",
+        "calories": 470,
+        "type": "food"
+      },
+      {
+        "name": "Bacon Egg Cheese Biscuit",
+        "calories": 420,
+        "type": "food"
+      },
+      {
+        "name": "Small Hash Browns",
+        "calories": 270,
+        "type": "food"
+      },
+      {
+        "name": "Biscuit",
+        "calories": 300,
+        "type": "food"
+      },
+      {
+        "name": "Chicken Sandwich",
+        "calories": 500,
+        "type": "food"
+      },
+      {
+        "name": "Chicken Strip",
+        "calories": 100,
+        "type": "food"
+      },
+      {
+        "name": "Small Mac n Cheese",
+        "calories": 280,
+        "type": "food"
+      },
+      {
+        "name": "Frosted Lemonade",
+        "calories": 350,
+        "type": "drink"
+      },
+      {
+        "name": "Medium Waffle Fries",
+        "calories": 420,
+        "type": "food"
+      }
+    ]
+  }
+]

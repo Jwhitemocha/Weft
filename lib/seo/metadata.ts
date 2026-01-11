@@ -14,7 +14,7 @@ export function createMetadata({
   image?: string
 }): Metadata {
   const url = `${siteUrl}${path}`
-  const imageUrl = image || `${siteUrl}/logo/weft_daruma.png`
+  const imageUrl = image || `${siteUrl}/logo/denim_daruma_text.png`
 
   return {
     title,

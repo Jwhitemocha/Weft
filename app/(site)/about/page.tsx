@@ -1,5 +1,4 @@
 import Card from '@/components/ui/Card'
-import Logo from '@/components/ui/Logo'
 import Image from 'next/image'
 
 export const metadata = {
@@ -27,7 +26,13 @@ export default function AboutPage() {
             <div className="flex justify-center mb-8">
               <div className="relative">
                 <div className="absolute inset-0 bg-denim-500/20 blur-2xl rounded-full" />
-                <Logo variant="weave" size={80} className="relative" />
+                <Image
+                  src="/logo/denim_daruma_text.png"
+                  alt="Weft Denim Daruma"
+                  width={180}
+                  height={180}
+                  className="relative h-auto w-[180px] drop-shadow-lg"
+                />
               </div>
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-neutral-text sm:text-5xl lg:text-6xl">
@@ -61,10 +66,10 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-denim-500/20 blur-3xl rounded-full" />
                 <Image
-                  src="/logo/daruma_only.png"
+                  src="/logo/Denim_daruma_only.png"
                   alt="Denim Daruma"
-                  width={200}
-                  height={200}
+                  width={280}
+                  height={280}
                   className="relative"
                 />
               </div>

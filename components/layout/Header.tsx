@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { LogoWithText } from '@/components/ui/Logo'
 
 interface NavItem {
   href: string
@@ -50,15 +49,15 @@ export default function Header(): React.ReactElement {
     <>
     <header className="sticky top-0 z-50 border-b border-neutral-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Primary navigation">
-        {/* Daruma Logo - Left */}
+        {/* Weft Logo - Left */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2.5 transition-opacity hover:opacity-80">
             <Image
-              src="/logo/daruma_only.png"
-              alt="Weft Daruma"
-              width={36}
-              height={36}
-              className="h-9 w-auto"
+              src="/logo/weft_text.png"
+              alt="Weft"
+              width={270}
+              height={108}
+              className="h-[108px] w-auto"
             />
           </Link>
         </div>
@@ -88,7 +87,7 @@ export default function Header(): React.ReactElement {
                 key={item.href}
                 href={item.href}
                 className={clsx(
-                  'text-sm font-medium transition-colors hover:text-denim-500',
+                  'text-lg font-medium transition-colors hover:text-denim-500',
                   isActive ? 'text-denim-500' : 'text-neutral-muted'
                 )}
                 aria-current={isActive ? 'page' : undefined}
@@ -123,7 +122,13 @@ export default function Header(): React.ReactElement {
         <div className="h-full flex flex-col border-l-4 border-denim-500">
           <div className="flex items-center justify-between p-4 border-b-2 border-neutral-border bg-neutral-surface">
             <Link href="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
-              <LogoWithText variant="weave" size={32} />
+              <Image
+                src="/logo/weft_text.png"
+                alt="Weft"
+                width={180}
+                height={72}
+                className="h-[72px] w-auto"
+              />
             </Link>
             <button
               type="button"
@@ -145,7 +150,7 @@ export default function Header(): React.ReactElement {
                     key={item.href}
                     href={item.href}
                     className={clsx(
-                      'block rounded-xl px-5 py-4 text-base font-semibold transition-all',
+                      'block rounded-xl px-5 py-4 text-lg font-semibold transition-all',
                       isActive
                         ? 'bg-denim-500 text-white shadow-md'
                         : 'text-neutral-text bg-neutral-surface hover:bg-denim-fade hover:text-denim-700 border border-neutral-border'

@@ -41,12 +41,12 @@ export default function HomePage() {
             <div className="relative mb-8">
               <div className="absolute inset-0 blur-2xl opacity-20 bg-denim-500 rounded-full scale-150" />
               <Image
-                src="/logo/weft_daruma.png"
+                src="/logo/denim_daruma_text.png"
                 alt="Weft Denim Daruma"
-                width={140}
-                height={140}
+                width={300}
+                height={300}
                 priority
-                className="relative h-auto w-28 sm:w-36 drop-shadow-lg"
+                className="relative h-auto w-60 sm:w-[312px] drop-shadow-lg"
               />
             </div>
 
