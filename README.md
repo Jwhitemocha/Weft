@@ -2,7 +2,7 @@
 
 **Weaving Your Fitness. Together**
 
-Weft is a front-end-only fitness and nutrition utility focused on helping beginners understand fat loss and energy balance through precise, transparent, and beautifully designed tools.
+Weft is a fitness and nutrition utility focused on helping beginners understand fat loss and energy balance through precise, transparent, and beautifully designed tools.
 
 ---
 
@@ -61,43 +61,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.
-
----
-
-## Accessibility
-
-Weft is built to WCAG AA standards. This includes:
-
-- Color contrast ≥ 4.5:1
-- Full keyboard navigation
-- Screen reader support
-- Visible focus states
-- Respect for `prefers-reduced-motion`
-
-Accessibility is not optional—it's part of every feature.
-
----
-
-## Privacy
-
-Weft is privacy-first by design:
-
-- No tracking cookies
-- No user profiling
-- No personal data collection
-- No consent banners needed
-
----
-
-## Contributing
-
-Weft is currently in early development. If you're interested in contributing, feel free to open an issue to discuss ideas.
-
----
-
-## License
-
-MIT
 
 ---
 

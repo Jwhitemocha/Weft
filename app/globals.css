@@ -1,26 +1,161 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* === Color System (HSL) === */
+
+  /* Base Neutrals - Warm Coffee Shop Palette */
+  --weft-bg: 38 35% 93%;         /* #f5efe7 - Warm cream/latte */
+  --weft-surface: 40 40% 97%;    /* #fcfaf6 - Cards, panels (lighter cream) */
+  --weft-text: 220 20% 16%;      /* #222831 - Rich charcoal */
+  --weft-muted: 30 8% 45%;       /* #7a7268 - Warm gray-brown */
+  --weft-border: 32 20% 84%;     /* #ded6ca - Warm sand border */
+
+  /* Denim Accents - Raw Indigo */
+  --weft-denim-300: 218 45% 68%; /* #8ba8d4 - Faded denim */
+  --weft-denim-500: 220 52% 46%; /* #3a5b99 - Raw denim blue */
+  --weft-denim-700: 222 55% 32%; /* #253d6e - Dark indigo */
+  --weft-denim-fade: 220 40% 95%; /* #f0f3f9 - Denim tint */
+
+  /* Semantic Colors */
+  --weft-success: 152 38% 36%;   /* #3a8267 - Muted sage */
+  --weft-warning: 38 85% 52%;    /* #e8a419 - Warm amber */
+  --weft-error: 0 55% 48%;       /* #bc3b3b - Muted brick */
+
+  /* Focus Ring */
+  --weft-focus: var(--weft-denim-500);
+
+  /* === Refined Typography === */
+  --font-geist-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* === Border Radius (Crafted) === */
+  --radius-sm: 0.5rem;    /* 8px  - Chips/Small UI */
+  --radius-md: 0.75rem;   /* 12px - Buttons/Inputs */
+  --radius-lg: 1rem;      /* 16px - Cards */
+  --radius-full: 9999px;
+
+  /* === Shadows (Warm) === */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  
+  /* === Motion === */
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 250ms;
+  --motion-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Colors - Mapping HSL variables */
+  --color-background: hsl(var(--weft-bg));
+  --color-foreground: hsl(var(--weft-text));
+  
+  --color-neutral-base: hsl(var(--weft-bg));
+  --color-neutral-surface: hsl(var(--weft-surface));
+  --color-neutral-text: hsl(var(--weft-text));
+  --color-neutral-muted: hsl(var(--weft-muted));
+  --color-neutral-border: hsl(var(--weft-border));
+
+  --color-denim-300: hsl(var(--weft-denim-300));
+  --color-denim-500: hsl(var(--weft-denim-500));
+  --color-denim-700: hsl(var(--weft-denim-700));
+  --color-denim-fade: hsl(var(--weft-denim-fade));
+
+  --color-success: hsl(var(--weft-success));
+  --color-warning: hsl(var(--weft-warning));
+  --color-error: hsl(var(--weft-error));
+
+  /* Maintain standard colors for compatibility if needed, but map to closest matches or keep generic if not specified */
+  /* We strictly want to force the new palette, so we don't map all 50-950 scales unless necessary. 
+     For now, we'll map a few common ones to our semantic tokens to prevent breaking existing code violently, 
+     but ideally we update components to use specific semantic names. */
+  
+  --color-neutral-50: hsl(var(--weft-surface)); /* approx */
+  --color-neutral-100: hsl(var(--weft-bg));     /* approx */
+  --color-neutral-200: hsl(var(--weft-border));
+  --color-neutral-300: hsl(var(--weft-border));
+  --color-neutral-400: hsl(var(--weft-muted));
+  --color-neutral-500: hsl(var(--weft-muted));
+  --color-neutral-600: hsl(var(--weft-muted));
+  --color-neutral-700: hsl(var(--weft-text));
+  --color-neutral-800: hsl(var(--weft-text));
+  --color-neutral-900: hsl(var(--weft-text));
+  
+  --color-denim-600: hsl(var(--weft-denim-500)); /* Map old primary to new primary */
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Border radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* === Base Styles === */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.6;
+}
+
+/* === Accessibility === */
+:focus-visible {
+  outline: 2px solid hsl(var(--weft-focus));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === Mobile Menu Animations === */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
