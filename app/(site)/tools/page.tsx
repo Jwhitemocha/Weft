@@ -59,19 +59,14 @@ export default function ToolsPage() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {
             const isAvailable = tool.status === 'available'
-            const CardWrapper = isAvailable ? Link : 'div'
-            const cardProps = isAvailable ? { href: `/tools/${tool.slug}` } : {}
+            const cardClassName = `group relative overflow-hidden rounded-2xl border border-neutral-border bg-neutral-surface transition-all duration-300 ${
+              isAvailable
+                ? 'hover:shadow-xl hover:shadow-denim-500/10 hover:border-denim-300 hover:-translate-y-1 cursor-pointer'
+                : 'opacity-60'
+            }`
 
-            return (
-              <CardWrapper
-                key={tool.slug}
-                {...cardProps}
-                className={`group relative overflow-hidden rounded-2xl border border-neutral-border bg-neutral-surface transition-all duration-300 ${
-                  isAvailable
-                    ? 'hover:shadow-xl hover:shadow-denim-500/10 hover:border-denim-300 hover:-translate-y-1 cursor-pointer'
-                    : 'opacity-60'
-                }`}
-              >
+            const cardContent = (
+              <>
                 {/* Gradient Header */}
                 <div className={`relative h-32 bg-gradient-to-br ${tool.gradient} p-6 flex items-center justify-center`}>
                   <div className="absolute inset-0 opacity-10">
@@ -111,7 +106,21 @@ export default function ToolsPage() {
                     </div>
                   )}
                 </div>
-              </CardWrapper>
+              </>
+            )
+
+            return isAvailable ? (
+              <Link
+                key={tool.slug}
+                href={`/tools/${tool.slug}`}
+                className={cardClassName}
+              >
+                {cardContent}
+              </Link>
+            ) : (
+              <div key={tool.slug} className={cardClassName}>
+                {cardContent}
+              </div>
             )
           })}
         </div>
