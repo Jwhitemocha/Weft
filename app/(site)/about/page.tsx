@@ -66,7 +66,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-denim-500/20 blur-3xl rounded-full" />
                 <Image
-                  src="/logo/Denim_daruma_only.png"
+                  src="/logo/denim_daruma_only.png"
                   alt="Denim Daruma"
                   width={280}
                   height={280}
