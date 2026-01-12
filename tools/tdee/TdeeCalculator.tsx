@@ -178,67 +178,97 @@ function NumberStepper({
   )
 }
 
-// Slider with visual feedback
-function StepsSlider({
+// Steps selector with distance equivalent
+function StepsSelector({
   value,
   onChange,
 }: {
   value: number
   onChange: (value: number) => void
 }) {
-  const getStepsEmoji = (steps: number) => {
-    if (steps < 3000) return '🛋️'
-    if (steps < 5000) return '🚶'
-    if (steps < 8000) return '🚶‍♂️'
-    if (steps < 12000) return '🏃'
-    return '🏃‍♂️'
+  // Convert steps to miles (2000 steps ≈ 1 mile)
+  const stepsToMiles = (steps: number): number => {
+    return steps / 2000
   }
 
-  const getStepsLabel = (steps: number) => {
-    if (steps < 3000) return 'Couch potato mode'
-    if (steps < 5000) return 'Light mover'
-    if (steps < 8000) return 'Average walker'
-    if (steps < 12000) return 'Active walker'
-    return 'Always on the move!'
+  const formatMiles = (miles: number): string => {
+    if (miles < 0.1) return '< 0.1'
+    if (miles % 1 === 0) return miles.toFixed(0)
+    return miles.toFixed(1)
   }
+
+  // Preset step options with activity labels
+  const stepPresets = [
+    { steps: 2000, label: 'Sedentary', description: 'Mostly sitting', emoji: '🛋️', miles: 1 },
+    { steps: 5000, label: 'Light Activity', description: 'Occasional walking', emoji: '🚶', miles: 2.5 },
+    { steps: 8000, label: 'Moderate Activity', description: 'Regular movement', emoji: '🚶‍♂️', miles: 4 },
+    { steps: 10000, label: 'Active', description: '10K steps daily', emoji: '🏃', miles: 5 },
+    { steps: 12000, label: 'Very Active', description: 'Highly active', emoji: '🏃‍♂️', miles: 6 },
+    { steps: 15000, label: 'Extremely Active', description: 'Always on the move', emoji: '💨', miles: 7.5 },
+  ]
+
+  const currentMiles = stepsToMiles(value)
+  const selectedPreset = stepPresets.find((p) => p.steps === value)
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-neutral-text">
-          <span className="mr-2">👟</span>
-          Daily Steps
-        </label>
-        <span className="text-2xl" title={getStepsLabel(value)}>{getStepsEmoji(value)}</span>
+      <label className="block text-sm font-medium text-neutral-text">
+        <span className="mr-2">👟</span>
+        Daily Steps
+      </label>
+
+      {/* Current selection display */}
+      <div className="bg-denim-fade/50 rounded-xl p-4 border-2 border-denim-300">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">
+              {selectedPreset?.emoji || '👟'}
+            </span>
+            <div>
+              <div className="text-lg font-bold text-denim-700">
+                {value.toLocaleString()} steps
+              </div>
+              <div className="text-sm text-denim-600">
+                ≈ {formatMiles(currentMiles)} mile{currentMiles !== 1 ? 's' : ''}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="relative pt-1">
-        <input
-          type="range"
-          min={0}
-          max={25000}
-          step={500}
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full h-3 rounded-full appearance-none cursor-pointer bg-neutral-border
-            [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 
-            [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-denim-500 
-            [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:cursor-pointer
-            [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-150
-            [&::-webkit-slider-thumb]:hover:scale-110
-            [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:h-6 
-            [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-denim-500 
-            [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-md [&::-moz-range-thumb]:cursor-pointer"
-          style={{
-            background: `linear-gradient(to right, hsl(var(--weft-denim-500)) 0%, hsl(var(--weft-denim-500)) ${(value / 25000) * 100}%, hsl(var(--weft-border)) ${(value / 25000) * 100}%, hsl(var(--weft-border)) 100%)`,
-          }}
-        />
+
+      {/* Preset buttons */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {stepPresets.map((preset) => {
+          const isSelected = value === preset.steps
+          return (
+            <button
+              key={preset.steps}
+              type="button"
+              onClick={() => onChange(preset.steps)}
+              className={clsx(
+                'px-4 py-3 rounded-xl text-left transition-all duration-200 border-2',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-denim-500 focus-visible:ring-offset-2',
+                isSelected
+                  ? 'bg-denim-500 text-white border-denim-500 shadow-md scale-[1.02]'
+                  : 'bg-neutral-surface text-neutral-text border-neutral-border hover:border-denim-300 hover:bg-denim-fade'
+              )}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">{preset.emoji}</span>
+                  <span className="font-medium text-sm">{preset.label}</span>
+                </div>
+              </div>
+              <div className="text-xs opacity-80">
+                {preset.steps.toLocaleString()} steps · {formatMiles(preset.miles)} mi
+              </div>
+            </button>
+          )
+        })}
       </div>
-      <div className="flex justify-between items-center">
-        <span className="text-lg font-bold text-denim-500">{value.toLocaleString()}</span>
-        <span className="text-sm text-neutral-muted">{getStepsLabel(value)}</span>
-      </div>
+
       <p className="text-xs text-neutral-muted bg-denim-fade/50 rounded-lg px-3 py-2">
-        💡 Check your phone&apos;s health app (Apple Health, Google Fit) or fitness tracker for your average daily steps.
+        💡 Don&apos;t have a pedometer? Use the distance guide above, or check your phone&apos;s health app (Apple Health, Google Fit) or fitness tracker for your average daily steps.
       </p>
     </div>
   )
@@ -924,8 +954,8 @@ export default function TdeeCalculator() {
           </div>
         </div>
 
-        {/* Steps slider */}
-        <StepsSlider
+        {/* Steps selector */}
+        <StepsSelector
           value={form.stepsPerDay}
           onChange={(v) => updateForm('stepsPerDay', v)}
         />
@@ -983,7 +1013,7 @@ export default function TdeeCalculator() {
                 <span className="font-medium text-sm">Intense</span>
               </div>
               <span className={clsx('block text-xs', form.workoutIntensity === 'intense' ? 'text-white/70' : 'text-neutral-muted')}>
-                HIIT, sprints, heavy lifting, CrossFit. Hard to talk, heart rate elevated, pushing limits.
+                HIIT, sprints, heavy lifting, CrossFit. Hard to talk, pushing to failure.
               </span>
             </SelectButton>
           </div>
