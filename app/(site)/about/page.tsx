@@ -35,11 +35,18 @@ export default function AboutPage() {
                 />
               </div>
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-neutral-text sm:text-5xl lg:text-6xl">
-              About <span className="text-denim-500">Weft</span>
+            <h1 className="text-4xl font-bold tracking-tight text-neutral-text sm:text-5xl lg:text-6xl flex items-center justify-center gap-3">
+              About{' '}
+              <Image
+                src="/logo/weft_text.png"
+                alt="Weft"
+                width={120}
+                height={60}
+                className="h-[1.2em] w-auto"
+              />
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-neutral-muted leading-relaxed">
-              Fitness tools that don&apos;t suck.
+              Weaving Your Fitness. Together.
             </p>
           </div>
         </div>
@@ -50,10 +57,13 @@ export default function AboutPage() {
         {/* Mission */}
         <div className="space-y-6 mb-16">
           <p className="text-lg text-neutral-muted leading-relaxed">
-            The fitness industry is full of noise. Apps that track everything but explain nothing. Influencers selling plans. Calculators that spit out numbers with no context.
+            In weaving, the <span className="font-bold text-denim-600">weft</span> is the thread that runs horizontally across the vertical warp threads. Alone, those threads are just loose strands. But when the weft binds them together—passing over and under, again and again—something stronger emerges. Denim. Something that holds.
           </p>
           <p className="text-lg text-neutral-muted leading-relaxed">
-            Weft is different. We built tools that actually teach you what the numbers mean and why they matter. 
+            Fitness is the same. TDEE, macros, energy balance, body composition—these are just isolated concepts until something ties them together. Until you understand how they connect, how they reinforce each other, how they create something whole.
+          </p>
+          <p className="text-lg text-neutral-muted leading-relaxed">
+            That&apos;s what we do. We don&apos;t just give you numbers. We weave them together. We show you how your metabolism connects to your diet, how your activity shapes your results, how every piece fits into a system you can actually understand. We are the <span className="font-bold text-denim-600">weft</span> that binds your fitness knowledge into something durable. Something real.
           </p>
         </div>
 
